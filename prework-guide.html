@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guardian Summit Prework — GitHub, Copilot & VS Code</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --pure-black: #192124;
+    --soft-black: #1E2426;
+    --white: #FFFFFF;
+    --highlight: #E7FF00;
+    --bg: var(--pure-black);
+    --bg-card: var(--soft-black);
+    --bg-elevated: #232A2D;
+    --bg-code: #161C1F;
+    --text: var(--white);
+    --text-secondary: #A0AEB5;
+    --text-dim: #5C6B72;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.16);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Work Sans', -apple-system, sans-serif;
+    letter-spacing: -0.03em;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  strong, b { font-weight: 600; }
+
+  .gradient-bar {
+    height: 3px;
+    background: linear-gradient(90deg, #E7FF00 0%, #4EA5FF 55%, #BB8FF2 100%);
+  }
+
+  .header {
+    padding: 2.5rem 3rem 1.25rem;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .header-eyebrow {
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--highlight);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.85rem;
+  }
+  .header-logo { height: 22px; width: auto; }
+  .header-divider { width: 1px; height: 18px; background: var(--border2); }
+  .header h1 {
+    font-size: 2.3rem; font-weight: 300; line-height: 1.15;
+    margin-bottom: 0.6rem; color: var(--white);
+  }
+  .header h1 strong { font-weight: 600; color: var(--highlight); }
+  .header p.sub { color: var(--text-secondary); font-size: 1rem; line-height: 1.6; max-width: 760px; }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 3rem 3rem; }
+
+  .stats-strip {
+    display: flex; gap: 1px; background: var(--border);
+    border-radius: 16px; overflow: hidden; margin: 1.5rem 0 2.25rem;
+  }
+  .stat-cell { flex: 1; background: var(--bg-card); padding: 1.2rem 1rem; text-align: center; }
+  .stat-num { font-size: 1.9rem; font-weight: 600; line-height: 1; margin-bottom: 0.35rem; }
+  .stat-num.hl { color: var(--highlight); }
+  .stat-label { font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); }
+
+  .callout {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--highlight);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2.25rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem; line-height: 1.65;
+  }
+  .callout strong { color: var(--white); }
+
+  .part {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 2px solid rgba(231,255,0,0.4);
+    border-radius: 14px;
+    padding: 1.75rem 1.9rem 1.9rem;
+    margin-bottom: 1.5rem;
+  }
+  .part-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.35rem; }
+  .part-badge {
+    flex-shrink: 0;
+    width: 34px; height: 34px; border-radius: 9px;
+    background: var(--highlight); color: var(--pure-black);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1rem;
+  }
+  .part-title { font-size: 1.3rem; font-weight: 600; line-height: 1.25; }
+  .part-note { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; margin: 0.5rem 0 1.15rem 0; }
+
+  ol.steps { list-style: none; counter-reset: step; }
+  ol.steps > li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 2.1rem;
+    margin-bottom: 0.9rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem; line-height: 1.6;
+  }
+  ol.steps > li:last-child { margin-bottom: 0; }
+  ol.steps > li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 0;
+    width: 1.5rem; height: 1.5rem; border-radius: 50%;
+    background: var(--bg-elevated); border: 1px solid var(--border2);
+    color: var(--white); font-size: 0.72rem; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.steps > li strong { color: var(--white); font-weight: 600; }
+
+  a.link { color: var(--highlight); text-decoration: none; border-bottom: 1px solid rgba(231,255,0,0.35); }
+  a.link:hover { border-bottom-color: var(--highlight); }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.12rem 0.45rem;
+    color: var(--white);
+  }
+
+  .tip {
+    margin-top: 1rem;
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem; line-height: 1.6;
+    color: var(--text-dim);
+  }
+  .tip strong { color: var(--text-secondary); font-weight: 600; }
+
+  .done {
+    background: var(--bg-card);
+    border: 1px solid var(--border2);
+    border-radius: 14px;
+    padding: 1.75rem 1.9rem;
+    margin-top: 0.5rem;
+  }
+  .done h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.1rem; }
+  .done h2 strong { color: var(--highlight); font-weight: 600; }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 0.6rem 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.55;
+    border-bottom: 1px solid var(--border);
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-box {
+    flex-shrink: 0; margin-top: 0.15rem;
+    width: 18px; height: 18px; border-radius: 5px;
+    border: 1.5px solid var(--highlight);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .check-box svg { width: 11px; height: 11px; stroke: var(--highlight); fill: none; stroke-width: 3; }
+
+  .footer {
+    max-width: 1080px; margin: 0 auto; padding: 1.75rem 3rem 3rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim); font-size: 0.8rem;
+  }
+
+  @media (max-width: 760px) {
+    .header, .container, .footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .header h1 { font-size: 1.8rem; }
+    .stats-strip { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="gradient-bar"></div>
+
+<div class="header">
+  <div class="header-eyebrow">
+    <img src="https://static.tenable.com/press/logos/TenableLogo_White_RGB.svg" alt="Tenable" class="header-logo" />
+    <span class="header-divider"></span>
+    <span>Guardian Summit · Prework</span>
+  </div>
+  <h1>Get your <strong>AI coding environment</strong> ready</h1>
+  <p class="sub">Complete this before the workshop. You will set up a GitHub account, turn on GitHub Copilot Free, and confirm it works inside VS Code. On the day, we build on this foundation to call the Tenable One Hexa MCP directly from your editor.</p>
+</div>
+
+<div class="container">
+
+  <div class="stats-strip">
+    <div class="stat-cell"><div class="stat-num">4</div><div class="stat-label">Parts</div></div>
+    <div class="stat-cell"><div class="stat-num hl">~20</div><div class="stat-label">Minutes</div></div>
+    <div class="stat-cell"><div class="stat-num">$0</div><div class="stat-label">Cost, no card</div></div>
+    <div class="stat-cell"><div class="stat-num">Mac / Win</div><div class="stat-label">Both supported</div></div>
+  </div>
+
+  <div class="callout">
+    <strong>Why this matters.</strong> The session moves fast. If everyone arrives with a working GitHub account, Copilot enabled, and VS Code installed, we spend the full hour on Hexa MCP, not on setup. Please finish all four parts and run the quick test in Part 4 before you arrive.
+  </div>
+
+  <!-- Part 1 -->
+  <div class="part">
+    <div class="part-head">
+      <div class="part-badge">1</div>
+      <div class="part-title">Create a GitHub account</div>
+    </div>
+    <p class="part-note">Skip this part if you already have a personal GitHub account you can sign in to.</p>
+    <ol class="steps">
+      <li>Go to <a class="link" href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a>.</li>
+      <li>Enter your email, create a password, and choose a username.</li>
+      <li>Verify your email using the code GitHub sends you.</li>
+      <li>Choose the <strong>Free</strong> account when prompted. No credit card is required.</li>
+    </ol>
+  </div>
+
+  <!-- Part 2 -->
+  <div class="part">
+    <div class="part-head">
+      <div class="part-badge">2</div>
+      <div class="part-title">Turn on GitHub Copilot Free</div>
+    </div>
+    <p class="part-note">Copilot Free gives you 2,000 code completions and 50 chat requests per month at no cost, which is plenty for the session.</p>
+    <ol class="steps">
+      <li>Go to <a class="link" href="https://github.com/copilot" target="_blank" rel="noopener">github.com/copilot</a> and sign in.</li>
+      <li>If you have no paid or organization-assigned Copilot, you are on <strong>Copilot Free</strong> by default. There is nothing to buy.</li>
+      <li>If a page asks for payment, back out. That is the Pro trial, which you do not need.</li>
+    </ol>
+    <div class="tip"><strong>Note.</strong> Use a personal GitHub account so everyone is on equal footing. If your company organization already assigns you a Copilot seat, that seat takes over instead of Free, which works fine too.</div>
+  </div>
+
+  <!-- Part 3 -->
+  <div class="part">
+    <div class="part-head">
+      <div class="part-badge">3</div>
+      <div class="part-title">Install VS Code</div>
+    </div>
+    <p class="part-note">VS Code runs on both macOS and Windows, and Copilot support is built in.</p>
+    <ol class="steps">
+      <li>Download from <a class="link" href="https://code.visualstudio.com/download" target="_blank" rel="noopener">code.visualstudio.com/download</a> and pick your platform (macOS or Windows).</li>
+      <li>Run the installer, then open VS Code. No separate Copilot extension download is required.</li>
+    </ol>
+  </div>
+
+  <!-- Part 4 -->
+  <div class="part">
+    <div class="part-head">
+      <div class="part-badge">4</div>
+      <div class="part-title">Sign in and test Copilot in VS Code</div>
+    </div>
+    <p class="part-note">This confirms your account, Copilot, and editor all work together. Please run it before the session.</p>
+    <ol class="steps">
+      <li>Click the account icon in the bottom-left of VS Code (or the Copilot icon in the top title bar).</li>
+      <li>Choose <strong>Sign in to use Copilot</strong> or <strong>Use Copilot Free</strong>, then sign in with your GitHub account.</li>
+      <li>Authorize VS Code in the browser prompt when it appears.</li>
+      <li>Create a new file, for example <code>test.py</code> or <code>test.js</code>. Type a comment like <code># function to add two numbers</code> and press Enter. Copilot should suggest code in grey ghost text. Press <strong>Tab</strong> to accept.</li>
+      <li>Open Copilot Chat from the chat icon in the top bar, ask <em>"explain this file"</em>, and confirm you get a response.</li>
+    </ol>
+    <div class="tip"><strong>If completions and chat both work, your prework is done.</strong></div>
+  </div>
+
+  <!-- Done checklist -->
+  <div class="done">
+    <h2>You are <strong>ready</strong> when</h2>
+    <div class="check-item"><span class="check-box"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>You can sign in to a personal GitHub account.</span></div>
+    <div class="check-item"><span class="check-box"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>GitHub Copilot Free is active on that account.</span></div>
+    <div class="check-item"><span class="check-box"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>VS Code is installed and opens on your machine.</span></div>
+    <div class="check-item"><span class="check-box"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Copilot suggests code completions in a test file.</span></div>
+    <div class="check-item"><span class="check-box"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Copilot Chat responds to a question.</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Tenable&reg; &middot; Guardian Summit &middot; Hexa MCP enablement &middot; 2026
+</div>
+
+</body>
+</html>
