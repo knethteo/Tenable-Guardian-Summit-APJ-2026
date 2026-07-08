@@ -148,6 +148,14 @@
   }
   .tip strong { color: var(--text-secondary); font-weight: 600; }
 
+  .screenshot {
+    display: block;
+    margin-top: 0.75rem;
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border2);
+  }
+
   .done {
     background: var(--bg-card);
     border: 1px solid var(--border2);
@@ -266,6 +274,9 @@
       <li>Authorize VS Code in the browser prompt when it appears.</li>
       <li>Create a new file, for example <code>test.py</code> or <code>test.js</code>. Type a comment like <code># function to add two numbers</code> and press Enter. Copilot should suggest code in grey ghost text. Press <strong>Tab</strong> to accept.</li>
       <li>Open Copilot Chat from the chat icon in the top bar, ask <em>"explain this file"</em>, and confirm you get a response.</li>
+      <li>In Copilot Chat, open the mode dropdown at the bottom of the chat box and confirm you can see an <strong>Agent</strong> option alongside Ask and Edit. If you only see Ask, update VS Code to the latest version. You do not need to use Agent mode yet, just confirm it is there.
+        <img src="assets/images/sshot_Agent_in_vscode.jpeg" alt="Agent mode in VS Code Copilot Chat" class="screenshot" />
+      </li>
     </ol>
     <div class="tip"><strong>If completions and chat both work, your prework is done.</strong></div>
   </div>
@@ -278,6 +289,7 @@
     <div class="check-item"><span class="check-box"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>VS Code is installed and opens on your machine.</span></div>
     <div class="check-item"><span class="check-box"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Copilot suggests code completions in a test file.</span></div>
     <div class="check-item"><span class="check-box"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Copilot Chat responds to a question.</span></div>
+    <div class="check-item"><span class="check-box"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Agent mode is available in your Copilot Chat.</span></div>
   </div>
 
 </div>
