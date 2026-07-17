@@ -208,14 +208,14 @@
 <div class="container">
 
   <div class="stats-strip">
-    <div class="stat-cell"><div class="stat-num">4</div><div class="stat-label">Parts</div></div>
+    <div class="stat-cell"><div class="stat-num">5</div><div class="stat-label">Parts</div></div>
     <div class="stat-cell"><div class="stat-num hl">~20</div><div class="stat-label">Minutes</div></div>
     <div class="stat-cell"><div class="stat-num">$0</div><div class="stat-label">Cost, no card</div></div>
     <div class="stat-cell"><div class="stat-num">Mac / Win</div><div class="stat-label">Both supported</div></div>
   </div>
 
   <div class="callout">
-    <strong>Why this matters.</strong> The session moves fast. If everyone arrives with a working GitHub account, Copilot enabled, and VS Code installed, we spend the full hour on Hexa MCP, not on setup. Please finish all four parts and run the quick test in Part 4 before you arrive.
+    <strong>Why this matters.</strong> The session moves fast. If everyone arrives with a working GitHub account, Copilot enabled, VS Code installed, and Node.js ready, we spend the full hour on Hexa MCP, not on setup. Please finish all five parts and run the quick test in Part 4 before you arrive.
   </div>
 
   <!-- Part 1 -->
@@ -283,6 +283,31 @@
     <div class="tip"><strong>If completions and chat both work, your prework is done.</strong></div>
   </div>
 
+  <!-- Part 5 -->
+  <div class="part">
+    <div class="part-head">
+      <div class="part-badge">5</div>
+      <div class="part-title">Install Node.js (includes npm)</div>
+    </div>
+    <p class="part-note">Node.js is required to run the Hexa MCP server locally during the session. The installer includes npm automatically.</p>
+    <ol class="steps">
+      <li>Go to <a class="link" href="https://nodejs.org/en/download" target="_blank" rel="noopener">nodejs.org/en/download</a> and download the installer for your platform — choose the <strong>LTS</strong> (Long Term Support) version.
+        <ul style="margin-top:0.5rem;padding-left:1.25rem;color:var(--text-secondary);">
+          <li><strong>Windows:</strong> Download the <code>.msi</code> installer and run it. Click through the setup wizard and leave all options at their defaults.</li>
+          <li><strong>macOS:</strong> Download the <code>.pkg</code> installer and run it. Follow the prompts and click through to finish.</li>
+        </ul>
+      </li>
+      <li>During installation, if prompted to <strong>install all necessary tools / dependencies</strong> (including Chocolatey on Windows), choose <strong>Yes</strong> or check the box to allow it.</li>
+      <li>Once the installer finishes, open a terminal (macOS: <strong>Terminal</strong>, Windows: <strong>Command Prompt</strong> or <strong>PowerShell</strong>) and run:
+        <pre style="background:var(--surface-2,#1a1a2e);border-radius:6px;padding:0.6rem 1rem;margin-top:0.5rem;font-size:0.85rem;"><code>node -v</code></pre>
+        You should see a version number such as <code>v22.x.x</code>. Then run:
+        <pre style="background:var(--surface-2,#1a1a2e);border-radius:6px;padding:0.6rem 1rem;margin-top:0.5rem;font-size:0.85rem;"><code>npm -v</code></pre>
+        You should see a version number such as <code>10.x.x</code>.
+      </li>
+    </ol>
+    <div class="tip"><strong>If both commands print version numbers, Node.js and npm are ready.</strong></div>
+  </div>
+
   <!-- Done checklist -->
   <div class="done">
     <h2>You are <strong>ready</strong> when</h2>
@@ -292,6 +317,7 @@
     <div class="check-item"><span class="check-box"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Copilot suggests code completions in a test file.</span></div>
     <div class="check-item"><span class="check-box"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Copilot Chat responds to a question.</span></div>
     <div class="check-item"><span class="check-box"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Agent mode is available in your Copilot Chat.</span></div>
+    <div class="check-item"><span class="check-box"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Running <code>node -v</code> and <code>npm -v</code> in a terminal both print version numbers.</span></div>
   </div>
 
 </div>
